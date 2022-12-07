@@ -22,7 +22,7 @@ my_screen.onkey(key="s", fun=paddle2.pmovedown)
 
 game_on = True
 while game_on:
-    time.sleep(0.05)
+    time.sleep(ball.timespeed)
     ball.move()
     ball.collisionright(paddle1)
     ball.collisionleft(paddle2)

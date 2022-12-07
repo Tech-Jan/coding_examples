@@ -2,7 +2,7 @@ import random
 from turtle import Turtle
 
 startspeedx = 6
-startspeedy = 3
+startspeedy = 10
 
 
 class Ball(Turtle):
@@ -15,16 +15,18 @@ class Ball(Turtle):
         self.goto(-300, 0)
         self.ballx = startspeedx
         self.bally = random.randint(0, startspeedx)
+        self.timespeed=0.03
 
     def move(self):
         self.goto(self.xcor() + self.ballx, self.ycor() + self.bally)
 
     def speedx(self):
-        self.ballx = - (abs(self.ballx) + 1) * self.ballx / (abs(self.ballx))
+        self.ballx *= -1
+        self.timespeed = 0.9*self.timespeed
 
     def speedy(self):
-        a = abs(round(self.ballx))
-        self.bally = random.randint(0, a) * int([-1, 1][random.randrange(2)])
+        a = 10
+        self.bally = random.triangular(0, 3,abs(a)) * int([-1, 1][random.randrange(2)])
 
     def collisionright(self, objectr):
         # with paddleright
@@ -41,7 +43,7 @@ class Ball(Turtle):
 
     def collisionwall(self):
         if self.ycor() > 280 or self.ycor() < -280:
-            self.bally = -self.bally
+            self.bally *= -1
 
     def out(self):
         if self.xcor() > 400 or self.xcor() < -400:
