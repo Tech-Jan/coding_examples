@@ -1,5 +1,5 @@
 import time
-from turtle import Turtle, Screen
+from turtle import Screen
 from snake import Snake
 from food import Food
 from scoreboard import Scoreboard
@@ -16,17 +16,17 @@ screen.tracer(0)
 food = Food()
 
 screen.listen()
-screen.onkey(key="Left", fun=snake.left)
-screen.onkey(key="Down", fun=snake.down)
-screen.onkey(key="Up", fun=snake.up)
-screen.onkey(key="Right", fun=snake.right)
+screen.onkey(key="Left", fun=snake.snakeleft)
+screen.onkey(key="Down", fun=snake.snakedown)
+screen.onkey(key="Up", fun=snake.snakeup)
+screen.onkey(key="Right", fun=snake.snakeright)
 screen.onkey(key="s", fun=snake.move_forward)
 
 score = Scoreboard()
 
 game_on = True
 
-while game_on == True:
+while game_on:
     snake.move_forward()
     screen.update()
     time.sleep(0.1)
@@ -42,7 +42,7 @@ while game_on == True:
         score.gameover()
         game_on = False
 
-    #detect collion with snake
+    # detect collion with snake
     for segment in snake.list[1:]:
         if snake.head.distance(segment) < 10:
             score.gameover()
