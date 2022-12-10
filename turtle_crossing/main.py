@@ -11,14 +11,22 @@ screen.setup(width=600, height=600)
 screen.tracer(0)
 tim = Player()
 screen.listen()
-screen.onkey(key="W",fun=tim.moveup)
+screen.onkey(key="Up",fun=tim.moveup)
 car = CarManager()
+my_scoreboard = Scoreboard()
 
 
 game_is_on = True
 while game_is_on:
     time.sleep(0.1)
     screen.update()
-    tim.finish()
+    if tim.finish():
+        my_scoreboard.increase_score()
+        car.increase_speed()
+
     car.create_car()
     car.move_cars()
+    game_is_on = car.collision(tim)
+my_scoreboard.gameover()
+screen.update()
+time.sleep(10)

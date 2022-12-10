@@ -1,5 +1,6 @@
 from turtle import Turtle
 import random
+from scoreboard import Scoreboard
 
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
@@ -26,3 +27,14 @@ class CarManager(Turtle):
     def move_cars(self):
         for car in self.all_cars:
             car.forward(STARTING_MOVE_DISTANCE)
+
+    def collision(self, myturtle):
+        for car in self.all_cars:
+            if car.distance(myturtle) < 20:
+
+                return False
+        return True
+
+    def increase_speed(self):
+        global STARTING_MOVE_DISTANCE
+        STARTING_MOVE_DISTANCE += MOVE_INCREMENT
