@@ -13,13 +13,13 @@ class CarManager(Turtle):
         self.all_cars = []
 
     def create_car(self):
-       random_chance =  random.randint(0,6)
-       if random_chance == 0:
-            new_car=Turtle()
+        random_chance = random.randint(0, 6)
+        if random_chance == 0:
+            new_car = Turtle()
             new_car.color(random.choice(COLORS))
             new_car.setheading(180)
             new_car.penup()
-            new_car.goto(300,random.randint(-250,250))
+            new_car.goto(300, random.randint(-250, 250))
             new_car.shape("square")
             new_car.shapesize(stretch_wid=1, stretch_len=2)
             self.all_cars.append(new_car)
@@ -31,9 +31,8 @@ class CarManager(Turtle):
     def collision(self, myturtle):
         for car in self.all_cars:
             if car.distance(myturtle) < 20:
-
-                return False
-        return True
+                return True
+        return False
 
     def increase_speed(self):
         global STARTING_MOVE_DISTANCE

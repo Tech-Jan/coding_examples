@@ -5,16 +5,14 @@ from player import Player
 from car_manager import CarManager
 from scoreboard import Scoreboard
 
-
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
 tim = Player()
 screen.listen()
-screen.onkey(key="Up",fun=tim.moveup)
+screen.onkey(key="Up", fun=tim.moveup)
 car = CarManager()
 my_scoreboard = Scoreboard()
-
 
 game_is_on = True
 while game_is_on:
@@ -26,7 +24,7 @@ while game_is_on:
 
     car.create_car()
     car.move_cars()
-    game_is_on = car.collision(tim)
-my_scoreboard.gameover()
-screen.update()
+    if car.collision(tim):
+        game_is_on = False
+        my_scoreboard.gameover()
 time.sleep(10)
