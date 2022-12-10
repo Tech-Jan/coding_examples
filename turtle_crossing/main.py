@@ -11,7 +11,7 @@ screen.setup(width=600, height=600)
 screen.tracer(0)
 tim = Player()
 screen.listen()
-screen.onkey(key="Up",fun=tim.moveup)
+screen.onkey(key="W",fun=tim.moveup)
 car = CarManager()
 
 
