@@ -25,12 +25,14 @@ test(2, non="aka", number=45)
 # Window
 window = Tk()
 window.title("my first Tinka app")
-window.minsize(width=500, height=300)
+window.minsize(width=500, height=100)
+window.config(padx=20,pady=20)
 
 # Label
 mylabel = Label(text="My First Label", font=("Arial", 22))
 # pack puts the label on screen
 mylabel.grid(column=0,row=0)
+mylabel.config(padx=10)
 
 
 def buttonclick():
