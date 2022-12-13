@@ -1,8 +1,9 @@
 from tkinter import *
 
 mywindow = Tk()
-mywindow.minsize(width=300, height=100)
+mywindow.minsize(width=220,height=20)
 mywindow.title("Mile to Km Converter")
+mywindow.config(padx=4,pady=4)
 
 label1 = Label(text="is equal to")
 label1.grid(column=1,row=1)
@@ -15,6 +16,7 @@ label3.grid(column=2,row=1)
 
 myinput = Entry()
 myinput.grid(column=2,row=0)
+myinput.config(width=10)
 
 def mybutton_click():
     givenmiles= int(myinput.get())
