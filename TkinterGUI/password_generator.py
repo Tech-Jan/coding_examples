@@ -120,6 +120,7 @@ def search_click():
             my_data = json.load(f)
 
     my_website = input_website.get()
+    #TODO dont use try except here. beter use if my_data[my_website].... else....
     try:
         my_data[my_website]
     except KeyError:
