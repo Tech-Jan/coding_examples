@@ -4,7 +4,17 @@ data = pandas.read_csv("nato_phonetic_alphabet.csv")
 # row.letter = row["letter"] and row["code"] would be the same as row.code
 my_nato_dict = {row.letter: row["code"] for index, row in data.iterrows()}
 # print(my_nato_dict)
-print([my_nato_dict[letter.upper()] for letter in input("whats ur names") if letter != " "])
+
+def transform_input():
+    print([my_nato_dict[letter.upper()] for letter in input("whats ur names") if letter != " "])
+def try_transform():
+    try:
+        transform_input()
+    except KeyError as myerror:
+        print(f"Only letters allowed, u used {myerror}")
+        try_transform()
+
+try_transform()
 
 #
 ##
